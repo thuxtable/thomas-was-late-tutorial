@@ -5,6 +5,7 @@ void Engine::input()
 {
 	//Begin polling even for global game inputs
 	Event event;
+
 	while (m_Window.pollEvent(event))
 	{
 		if (event.type == Event::KeyPressed)
@@ -39,11 +40,13 @@ void Engine::input()
 	//Handle input specific to Thomas
 	if (m_Thomas.handleInput()) {
 		//Play a jump sound
+		m_SM.playJump();
 	}
 
 	//Handle input specific to Bob
 	if (m_Bob.handleInput()) {
 		//Play a jump sound
+		m_SM.playJump();
 	}
 
 }

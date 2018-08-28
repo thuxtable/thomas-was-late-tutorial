@@ -11,7 +11,11 @@ Thomas::Thomas(){
 
 //The overridden virtual function handling Thomas' input
 bool Thomas::handleInput() {
+
+	m_JustJumped = false;
+
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
+
 		//Start a jump if not already jumping and only if standing on ground (i.e. not already falling)
 		if (!m_IsJumping && !m_IsFalling) {
 			m_IsJumping = true;

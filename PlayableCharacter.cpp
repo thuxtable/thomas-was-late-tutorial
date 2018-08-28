@@ -14,12 +14,14 @@ void PlayableCharacter::spawn(Vector2f startPosition, float gravity) {
 }
 
 void PlayableCharacter::update(float elapsedTime) {
+
 	//Handle left-right movement
 	if (m_RightPressed) {
-		m_Position.x -= m_Speed * elapsedTime;
-	}
-	if (m_LeftPressed) {
 		m_Position.x += m_Speed * elapsedTime;
+	}
+
+	if (m_LeftPressed) {
+		m_Position.x -= m_Speed * elapsedTime;
 	}
 
 	//Handle jumping
@@ -60,13 +62,13 @@ void PlayableCharacter::update(float elapsedTime) {
 
 		//Right
 		m_Right.left = r.left + r.width - 2;
-		m_Right.top = r.top + (r.height * 0.35);
+		m_Right.top = r.top + r.height * 0.35;
 		m_Right.width = 1;
 		m_Right.height = r.height * 0.3;
 
 		//Left
 		m_Right.left = r.left;
-		m_Right.top = r.top + (r.height * 0.5);
+		m_Right.top = r.top + r.height * 0.5;
 		m_Right.width = 1;
 		m_Right.height = r.height * 0.3;
 
@@ -81,7 +83,8 @@ FloatRect PlayableCharacter::getPosition() {
 
 //Use / 2 to dynamically arrive at the center of characters with different heights
 Vector2f PlayableCharacter::getCenter() {
-	return Vector2f(m_Position.x + m_Sprite.getGlobalBounds().width / 2,
+	return Vector2f(
+		m_Position.x + m_Sprite.getGlobalBounds().width / 2,
 		m_Position.y + m_Sprite.getGlobalBounds().height / 2);
 }
 
