@@ -25,7 +25,7 @@ protected:
 	float m_TimeThisJump;
 
 	//Has the player just initiated a jump?
-	bool m_JustJumped;
+	bool m_JustJumped = false;
 
 private:
 

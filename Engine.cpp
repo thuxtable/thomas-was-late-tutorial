@@ -27,11 +27,21 @@ Engine::Engine()
 		//Time to get a new PC
 		m_Window.close();
 	}
+	else {
+		//Load shaders (1 vertex, 1 fragment)
+		m_RippleShader.loadFromFile("shaders/vertShader.vert", "shaders/rippleShader.frag");
+	}
 
 	m_BackgroundTexture = TextureHolder::GetTexture("graphics/background.png");
 
 	//Associate the sprite with the texture
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
+
+	//Load the texture for the background vertex array
+	m_TextureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
+
+	//Initialize the particle system
+	m_PS.init(1000);
 
 }
 

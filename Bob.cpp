@@ -12,32 +12,36 @@ Bob::Bob() {
 
 //Necessarily overridden pure virutal function
 bool Bob::handleInput() {
-		if (Keyboard::isKeyPressed(Keyboard::Up)) {
-			//Start a jump if not already jumping and only if standing on ground (i.e. not already falling)
-			if (!m_IsJumping && !m_IsFalling) {
-				m_IsJumping = true;
-				m_TimeThisJump = 0;
-				m_JustJumped = true;
-			}
-		}
-		else {
-			m_IsJumping = false;
-			m_IsFalling = true;
-		}
 
-		if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			m_LeftPressed = true;
-		}
-		else {
-			m_LeftPressed = false;
-		}
+	m_JustJumped = false;
 
-		if (Keyboard::isKeyPressed(Keyboard::Right)) {
-			m_RightPressed = true;
+	if (Keyboard::isKeyPressed(Keyboard::Up)) {
+		
+		//Start a jump if not already jumping and only if standing on ground (i.e. not already falling)
+		if (!m_IsJumping && !m_IsFalling) {
+			m_IsJumping = true;
+			m_TimeThisJump = 0;
+			m_JustJumped = true;
 		}
-		else {
-			m_RightPressed = false;
-		}
+	}
+	else {
+		m_IsJumping = false;
+		m_IsFalling = true;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Left)) {
+		m_LeftPressed = true;
+	}
+	else {
+		m_LeftPressed = false;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Right)) {
+		m_RightPressed = true;
+	}
+	else {
+		m_RightPressed = false;
+	}
 
 		return m_JustJumped;
 }
